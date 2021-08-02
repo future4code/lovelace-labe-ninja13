@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export class AppContainer extends Component {
+export default class Home extends Component {
   render() {
     return (
       <div>
-        <p>Pronto para começar!</p>
+        <p>gloria</p>
       </div>
     )
   }
