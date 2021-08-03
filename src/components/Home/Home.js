@@ -25,6 +25,10 @@ export default class Home extends Component {
         <p>LabeNinjas</p>
         <p>O talento certo no momento certo</p>
         </Texto>
+          
+        <button>Cadastro</button>
+        <button>Seja um Ninja</button>
+          
       </div>
     )
   }
