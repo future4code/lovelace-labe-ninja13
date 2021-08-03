@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Header from './Header/Header'
+import Header from '../Header/Header'
 import styled from 'styled-components'
 
 
@@ -17,7 +17,6 @@ p{
 `
 
 
-
 export default class Home extends Component {
   render() {
     return (
@@ -25,7 +24,6 @@ export default class Home extends Component {
         <Header/>
        <Texto>
         <p>LabeNinjas</p>
-      
         <p>O talento certo no momento certo</p>
         </Texto>
       </div>
