@@ -1,6 +1,6 @@
 import React from "react"
 import styled, { createGlobalStyle } from 'styled-components'
-
+import Button from '@material-ui/core/Button';
 
 const GlobalStyle = createGlobalStyle `
 * { 
@@ -16,13 +16,14 @@ background-color:lightgray;
 padding:10px;
 justify-content:space-between;
 `
-const Botoes =styled.div`
-margin-right:7%;
+const ButtonContainer=styled.div`
+display: flex;
+justify-content: space-between;
 
 button{
-    margin-right:15px;
-    padding:5px;
+    margin-right:20px;
 }
+
 `
 
 export default function Header (){
@@ -31,11 +32,17 @@ export default function Header (){
             <GlobalStyle/>
        <h1>LabeNinjas</h1>
 
-        <Botoes>
-       <button>Home</button>
+        <ButtonContainer>
+       <Button variant="contained" color="primary">
+      Home
+    </Button>
 
-       <button>Carrinho</button>
-       </Botoes>
+    <Button variant="contained" color="primary">
+      Carrinho
+    </Button>
+
+    </ButtonContainer>
+      
         </Container>
     )
 }
