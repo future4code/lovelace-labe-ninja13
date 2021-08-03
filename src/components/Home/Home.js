@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../Header/Header'
 import styled from 'styled-components'
+import TelaDeCadastro from '../TelaDeCadastro/TelaDeCadastro'
 
 
 const Texto = styled.div`
@@ -28,7 +29,7 @@ export default class Home extends Component {
           
         <button>Cadastro</button>
         <button>Seja um Ninja</button>
-          
+        <TelaDeCadastro/>
       </div>
     )
   }
