@@ -1,5 +1,6 @@
 ``` 
-decidimos a estilização e escolhemos a peleta de cores
+decidimos a estilização e escolhemos a peleta de cores.
+
 
 
 ```
