@@ -22,7 +22,7 @@ export default class TelaDeCadastro extends React.Component {
     }
 
 justify-content: center;
-align-items: center;
+align-items: center; 
 flex-direction: column;
 margin-top: 2%;
 `
