@@ -2,6 +2,19 @@ import React from 'react'
 
 
 export default class TelaDeCadastro extends React.Component {
+
+
+
+    state={
+        titulo:"",
+        descricao:"",
+        preco:""
+    }
+cadastraNinja=()=>{
+
+}
+   
+   
     render() {
         return (
             <>
@@ -16,7 +29,7 @@ export default class TelaDeCadastro extends React.Component {
 
                     <input type="text" placeholder="Preço" />
 
-                    <select name="info[]" size="4" multiple>
+                    <select name="info[]">
                         <option value="">Cartão de Débito</option>
                         <option value="">Cartão de Crédito</option>
                         <option value="">PayPal</option>
