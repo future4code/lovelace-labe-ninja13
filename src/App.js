@@ -12,7 +12,7 @@ import TelaDeCadastro from './components/TelaDeCadastro/TelaDeCadastro';
 export default class App extends React.Component{
 
 state={
-	tela:"home"
+	tela:"cadastrar"
 }
 
 renderizatela=()=>{

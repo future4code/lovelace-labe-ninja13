@@ -1,20 +1,63 @@
 import React from 'react'
+import axios from "axios"
 
 
 export default class TelaDeCadastro extends React.Component {
 
-
-
-    state={
-        titulo:"",
-        descricao:"",
-        preco:""
+    state = {
+        title: "",
+        description: "",
+        price:"",
+        paymentMethods: ["cartao"],
+        dueDate: "2222-10-10"
     }
-cadastraNinja=()=>{
 
-}
-   
- 
+    mudaTitle = (e) => {
+        this.setState({
+            title: e.target.value
+        })
+    }
+    mudaDescription = (e) => {
+        this.setState({
+            description:e.target.value
+        })
+    }
+    mudaPrice = (e) => {
+        this.setState({
+            price:e.target.value
+        })
+    }
+    mudaPaymentMethods = (e) => {
+        this.setState({
+            
+        })
+    }
+    mudaDueDate = () => {
+        this.setState({
+
+        })
+    }
+    cadastraNinja = () => {
+        const url = ` https://labeninjas.herokuapp.com/jobs`
+        const headers = {
+            headers: {
+                Authorization: "8f358eda-ff93-4ae6-9905-c06d326e4ad8"
+            }
+        }
+        const body = {
+            title: this.state.title,
+            description: this.state.description,
+            price:Number(this.state.price),
+            paymentMethods: this.state.paymentMethods,
+            dueDate: this.state.dueDate
+
+        }
+        axios.post(url, body, headers)
+            .then((res) => { console.log(res.data.message) })
+            .catch((err) => { console.log(err.response.data) })
+    }
+
+
     render() {
         return (
             <>
@@ -23,13 +66,32 @@ cadastraNinja=()=>{
                     <h1>Cadastre o seu serviço</h1>
 
 
-                    <input type="text" placeholder="Titulo" />
+                    <input
+                        value={this.state.title}
+                        onChange={this.mudaTitle}
+                        type="text"
+                        placeholder="Titulo"
 
-                    <input type="text" placeholder="Descição" />
+                    />
 
-                    <input type="text" placeholder="Preço" />
+                    <input
+                     value={this.state.description}
+                     onChange={this.mudaDescription}
+                        type="text"
+                        placeholder="Descição"
 
-                    <select name="info[]">
+                    />
+
+                    <input
+                    type="number"
+                     value={this.state.price}
+                     onChange={this.mudaPrice}
+                    placeholder="Preço"
+
+                    />
+
+                    <select name="info[]"
+                    >
                         <option value="">Cartão de Débito</option>
                         <option value="">Cartão de Crédito</option>
                         <option value="">PayPal</option>
@@ -39,7 +101,11 @@ cadastraNinja=()=>{
 
                     <input type="date" />
                     <br /><br />
-                    <button>Cadastrar serviço</button>
+                    <button
+                        onClick={this.cadastraNinja}
+
+
+                    >Cadastrar serviço</button>
 
                 </div>
             </>
