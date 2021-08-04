@@ -16,7 +16,7 @@ p{
   padding: 15px;
 }
 `
-
+const Button = styled.button``
 export default class Home extends Component {
   render() {
     return (
@@ -27,9 +27,11 @@ export default class Home extends Component {
         <p>O talento certo no momento certo</p>
         </Texto>
           
-        <button>Cadastro</button>
+        <Button onClick={() => this.props.trocarTela("cadastrar")}>
+            Quero ser um ninja
+          </Button>
+
         <button>Seja um Ninja</button>
-        <TelaDeCadastro/>
       </div>
     )
   }
