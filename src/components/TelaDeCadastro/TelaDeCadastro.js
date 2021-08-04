@@ -75,7 +75,7 @@ export default class TelaDeCadastro extends React.Component {
 
                     <h1>Cadastre o seu serviço</h1>
 
-
+            <Texto>
                     <input
                         value={this.state.title}
                         onChange={this.mudaTitle}
@@ -116,8 +116,10 @@ export default class TelaDeCadastro extends React.Component {
 
 
                     >Cadastrar serviço</button>
+                    </Texto>
 
                 </div>
+                
             </>
         )
 
