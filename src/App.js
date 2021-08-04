@@ -14,8 +14,9 @@ import Carrinho from './components/Carrinho/Carrinho'
 export default class App extends React.Component{
 
 state={
-	tela:"cadastrar"
+	tela:"home"
 }
+
 
 renderizatela=()=>{
 	switch(this.state.tela){
