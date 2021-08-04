@@ -7,7 +7,7 @@ const Texto = styled.div`
 display:flex;
 
 justify-content: center;
-align-items: center;
+align-items: center; 
 flex-direction: column;
 margin-top: 2%;
 `
