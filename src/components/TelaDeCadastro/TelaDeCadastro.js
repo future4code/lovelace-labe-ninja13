@@ -1,5 +1,15 @@
 import React from 'react'
 import axios from "axios"
+import styled from 'styled-components'
+
+
+const Texto = styled.div`
+display:flex;
+justify-content: center;
+align-items: center; 
+flex-direction: column;
+margin-top: 2%;
+`
 
 
 export default class TelaDeCadastro extends React.Component {
