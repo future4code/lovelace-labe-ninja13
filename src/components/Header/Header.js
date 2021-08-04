@@ -1,7 +1,7 @@
 import React from "react"
 import styled, { createGlobalStyle } from 'styled-components'
 import Button from '@material-ui/core/Button';
-
+import  Home  from '../Home/Home'
 
 
 const GlobalStyle = createGlobalStyle `
@@ -28,18 +28,19 @@ button{
 
 `
 
-export default function Header (){
-    return(
+export default class Header extends React.Component {
+    render(){
+        return(
         <Container>
             <GlobalStyle/>
        <h1>LabeNinjas</h1>
 
         <ButtonContainer>
-       <Button variant="contained" color="primary">
+       <Button variant="contained" color="primary" onClick={() => this.props.trocarTela("home")}>
       Home
     </Button>
 
-    <Button variant="contained" color="primary">
+    <Button variant="contained" color="primary" onClick={() => this.props.trocarTela("carrinho")}>
       Carrinho
     </Button>
 
@@ -47,5 +48,7 @@ export default function Header (){
     
       
         </Container>
-    )
+    ) 
+    }
+   
 }

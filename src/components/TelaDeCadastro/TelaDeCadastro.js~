@@ -1,0 +1,76 @@
+import Header from '../Header/Header'
+import React from 'react'
+import styled from 'styled-components'
+import axios from 'axios'
+
+const Texto = styled.div`
+display:flex;
+
+justify-content: center;
+align-items: center;
+flex-direction: column;
+margin-top: 2%;
+`
+
+
+export default class TelaDeCadastro extends React.Component {
+
+
+
+    state={
+        titulo:"",
+        descricao:"",
+        preco:""
+    }
+    
+    handleTitulo = (e)=>{
+        this.setState({titulo: e.target.value})
+    }
+    
+    handleDescricao = (e)=>{
+        this.setState({descricao: e.target.value})
+    }
+    
+    handlePreco = (e)=>{
+        this.setState({preco: e.target.value})
+    }
+    
+cadastraNinja=()=>{
+
+}
+   
+ 
+    render() {
+        return (
+            <>
+                <div>
+                <Header trocarTela={this.props.trocarTela}/>
+                <Texto>
+                    <h1>Cadastre o seu serviço</h1>
+                
+
+                    <input type="text" placeholder="Titulo" value={this.state.titulo} onChange={this.handleTitulo} />
+
+                    <input type="text" placeholder="Descição" value={this.state.descricao} onChange={this.handleDescricao} />
+
+                    <input type="text" placeholder="Preço" value={this.state.preco} onChange={this.handlePreco} />
+
+                    <select class="sel1" name="info[]">
+                        <option value="">Cartão de Débito</option>
+                        <option value="">Cartão de Crédito</option>
+                        <option value="">PayPal</option>
+                        <option value="">Boleto</option>
+                        <option value="">Pix</option>
+                    </select>
+
+                    <input type="date" />
+                    <br /><br />
+                    <button>Cadastrar serviço</button>
+                    </Texto>
+                </div>
+            </>
+        )
+
+
+    }
+}
