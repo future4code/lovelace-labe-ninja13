@@ -14,13 +14,27 @@ margin-top: 2%;
 
 
 export default class TelaDeCadastro extends React.Component {
+
+
+
     state={
         titulo:"",
         descricao:"",
         preco:""
     }
     
-   
+    handleTitulo = (e)=>{
+        this.setState({titulo: e.target.value})
+    }
+    
+    handleDescricao = (e)=>{
+        this.setState({descricao: e.target.value})
+    }
+    
+    handlePreco = (e)=>{
+        this.setState({preco: e.target.value})
+    }
+    
 cadastraNinja=()=>{
 
 }
@@ -35,11 +49,11 @@ cadastraNinja=()=>{
                     <h1>Cadastre o seu serviço</h1>
                 
 
-                    <input type="text" placeholder="Titulo" />
+                    <input type="text" placeholder="Titulo" value={this.state.titulo} onChange={this.handleTitulo} />
 
-                    <input type="text" placeholder="Descição" />
+                    <input type="text" placeholder="Descição" value={this.state.descricao} onChange={this.handleDescricao} />
 
-                    <input type="number" min="1" placeholder="Preço" />
+                    <input type="text" placeholder="Preço" value={this.state.preco} onChange={this.handlePreco} />
 
                     <select class="sel1" name="info[]">
                         <option value="">Cartão de Débito</option>

@@ -21,17 +21,18 @@ export default class Home extends Component {
   render() {
     return (
       <div>
-        <Header/>
+        <Header trocarTela={this.props.trocarTela}/>
        <Texto>
         <p>LabeNinjas</p>
         <p>O talento certo no momento certo</p>
         </Texto>
-          
+          <div class="btn">
         <Button onClick={() => this.props.trocarTela("cadastrar")}>
             Quero ser um ninja
           </Button>
 
-        <button>Seja um Ninja</button>
+        <button class="btnCont" onClick={()=> this.props.trocarTela("contratar")} >Contratar um Ninja</button>
+        </div>
       </div>
     )
   }
