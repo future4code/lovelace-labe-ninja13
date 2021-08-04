@@ -17,6 +17,7 @@ state={
 	tela:"home"
 }
 
+
 renderizatela=()=>{
 	switch(this.state.tela){
 		case "home":
