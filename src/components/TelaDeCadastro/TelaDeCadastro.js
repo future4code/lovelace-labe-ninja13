@@ -2,6 +2,16 @@ import Header from '../Header/Header'
 import React from 'react'
 
 import axios from "axios"
+import styled from 'styled-components'
+
+
+const Texto = styled.div`
+display:flex;
+justify-content: center;
+align-items: center; 
+flex-direction: column;
+margin-top: 2%;
+`
 
 import styled from 'styled-components'
 import axios from 'axios'
@@ -93,7 +103,12 @@ cadastraNinja=()=>{
                 <Header trocarTela={this.props.trocarTela}/>
                 <Texto>
                     <h1>Cadastre o seu serviço</h1>
+
+
+            <Texto>
+
                 
+
 
                     <input
                         value={this.state.title}
@@ -140,12 +155,14 @@ cadastraNinja=()=>{
 
 
                     >Cadastrar serviço</button>
+                    </Texto>
 
 
                     <button>Cadastrar serviço</button>
                     </Texto>
 
                 </div>
+                
             </>
         )
 
