@@ -3,20 +3,6 @@
     margin-left: 20px;
 }
 
-.cont{
-    display: inline-block;
-    margin-right: 30px;
-    margin-top: 30px;
-    
-}
-
-.lista{
-    background-color: gray;
-    width: 250px;
-    padding: 10px;
-    border: 1px solid;
-}
-
 .titulo{
     text-align: center;
     margin-top:1%;
@@ -45,8 +31,4 @@ input{
 }
 .btnCont{
     margin-left: 1%;
-}
-
-.btnCadastrar{
-    margin-top: 30px;
 }
