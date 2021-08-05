@@ -47,6 +47,7 @@ getAllJobs=()=>{
         </div>
 
         </div>
+
     })
          return(
             <div>
