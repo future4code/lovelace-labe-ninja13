@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from "axios"
 import styled from 'styled-components'
+import Header from '../Header/Header'
 
 
 const Texto = styled.div`
@@ -50,13 +51,16 @@ export default class TelaDeCadastro extends React.Component {
         })
     }
     cadastraNinja = () => {
-        const url = ` https://labeninjas.herokuapp.com/jobs`
-        const headers = {
+        if(this.state.title == '' || this.state.description == '' || this.state.paymentMethods == '' || this.state.dueDate == ''){
+            alert('Preencha os campos!')
+        }else{
+           const url = ` https://labeninjas.herokuapp.com/jobs`
+            const headers = {
             headers: {
                 Authorization: "8f358eda-ff93-4ae6-9905-c06d326e4ad8"
             }
         }
-        const body = {
+            const body = {
             title: this.state.title,
             description: this.state.description,
             price:Number(this.state.price),
@@ -64,11 +68,15 @@ export default class TelaDeCadastro extends React.Component {
             dueDate: this.state.dueDate
 
         }
-        axios.post(url, body, headers)
-            .then((res) => { console.log(res.data.message) 
-                this.setState({ inputTitulo: "", inputDescricao: "", inputPreco: 0, inputFormaPagamento: [], inputPrazo: ""})         
+
+            axios.post(url, body, headers)
+            .then((res) => { alert('Serviço cadastrado com sucesso!')
+            this.setState({ inputTitulo: "", inputDescricao: "", inputPreco: 0, inputFormaPagamento: [], inputPrazo: ""})         
             })
-            .catch((err) => { console.log(err.response.data) })
+            .catch((err) => { console.log(err.response.data) }) 
+        }
+        
+       
     }
 
 
@@ -78,8 +86,9 @@ export default class TelaDeCadastro extends React.Component {
         return (
             <>
                 <div>
+                 <Header trocarTela={this.props.trocarTela}/>
 
-                    <h1>Cadastre o seu serviço</h1>
+                    <h1 class="titulo">Cadastre o seu serviço</h1>
 
             <Texto>
                     <input
@@ -106,8 +115,9 @@ export default class TelaDeCadastro extends React.Component {
 
                     />
 
-<select 
-                         value={this.state.paymentMethods}
+
+                    <select class="sel1" value={this.state.paymentMethods}
+
                          onChange={this.mudaPaymentMethods}
                          >
                             <option selected>Forma de Pagamento:</option>
@@ -120,11 +130,8 @@ export default class TelaDeCadastro extends React.Component {
 
                     <input type="date" name="prazo" value={this.state.dueDate} onChange={this.mudaDueDate} />
         
-                    <button
-                        onClick={this.cadastraNinja}
+                    <button onClick={this.cadastraNinja} class="btnCadastrar">Cadastrar serviço</button>
 
-
-                    >Cadastrar serviço</button>
                     </Texto>
 
                 </div>

@@ -38,12 +38,16 @@ getAllJobs=()=>{
     render(){
     
     const mostrar = this.state.listaDeServicos.map((item)=>{
-        return <>
-        <div>{convertDate(item.dueDate)}</div>
-        <div>titulo:{item.title}</div>
-        <div>preco:{item.price}</div>
+        return <div class="cont">
+        
+        <div class="lista">Titulo: {item.title}<br/><br/>
+        Preco: R$ {item.price}<br/><br/>
+        Prazo: {item.dueDate}<br/><br/>
+        <button>Ver detalhes</button>&nbsp;&nbsp;&nbsp;<button>Adicionar ao carrinho</button>
+        </div>
 
-        </>
+        </div>
+
     })
          return(
             <div>
