@@ -11,16 +11,18 @@ flex-direction: column;
 margin-top: 2%;
 `
 
-
+  
 export default class TelaDeCadastro extends React.Component {
 
     state = {
         title: "",
         description: "",
         price:"",
-        paymentMethods: ["cartao"],
-        dueDate: "2222-10-10"
+        paymentMethods: [],
+        dueDate: ""
     }
+
+
 
     mudaTitle = (e) => {
         this.setState({
@@ -39,12 +41,12 @@ export default class TelaDeCadastro extends React.Component {
     }
     mudaPaymentMethods = (e) => {
         this.setState({
-            
+            paymentMethods:e.target.value
         })
     }
-    mudaDueDate = () => {
+    mudaDueDate = (e) => {
         this.setState({
-
+            dueDate:e.target.value
         })
     }
     cadastraNinja = () => {
@@ -58,17 +60,21 @@ export default class TelaDeCadastro extends React.Component {
             title: this.state.title,
             description: this.state.description,
             price:Number(this.state.price),
-            paymentMethods: this.state.paymentMethods,
+            paymentMethods: [this.state.paymentMethods],
             dueDate: this.state.dueDate
 
         }
         axios.post(url, body, headers)
-            .then((res) => { console.log(res.data.message) })
+            .then((res) => { console.log(res.data.message) 
+                this.setState({ inputTitulo: "", inputDescricao: "", inputPreco: 0, inputFormaPagamento: [], inputPrazo: ""})         
+            })
             .catch((err) => { console.log(err.response.data) })
     }
 
 
     render() {
+        
+
         return (
             <>
                 <div>
@@ -100,17 +106,20 @@ export default class TelaDeCadastro extends React.Component {
 
                     />
 
-                    <select name="info[]"
-                    >
-                        <option value="">Cartão de Débito</option>
-                        <option value="">Cartão de Crédito</option>
-                        <option value="">PayPal</option>
-                        <option value="">Boleto</option>
-                        <option value="">Pix</option>
-                    </select>
+<select 
+                         value={this.state.paymentMethods}
+                         onChange={this.mudaPaymentMethods}
+                         >
+                            <option selected>Forma de Pagamento:</option>
+                            <option>Cartão de Crédito</option>
+                            <option>Cartão de Débito</option>
+                            <option>Pix</option>
+                            <option>PayPal</option>
+                            <option>Boleto</option>
+                         </select>
 
-                    <input type="date" />
-                    <br /><br />
+                    <input type="date" name="prazo" value={this.state.dueDate} onChange={this.mudaDueDate} />
+        
                     <button
                         onClick={this.cadastraNinja}
 
