@@ -37,10 +37,12 @@ getAllJobs=()=>{
     render(){
     
     const mostrar = this.state.listaDeServicos.map((item)=>{
-        return <li>
-            {item.title}
-              {item.dueDate} 
-                   </li>
+        return <>
+        
+        <div>titulo:{item.title}</div>
+        <div>preco:{item.price}</div>
+
+        </>
     })
          return(
             <div>
