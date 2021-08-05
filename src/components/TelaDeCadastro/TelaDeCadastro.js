@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from "axios"
 import styled from 'styled-components'
-
+import Header from '../Header/Header'
 
 const Texto = styled.div`
 display:flex;
@@ -63,8 +63,8 @@ export default class TelaDeCadastro extends React.Component {
 
         }
         axios.post(url, body, headers)
-            .then((res) => { console.log(res.data.message) })
-            .catch((err) => { console.log(err.response.data) })
+            .then((res) => {alert('Serviço cirado com sucesso')
+            }).catch((err) => { console.log(err.response.data) })
     }
 
 
@@ -72,8 +72,8 @@ export default class TelaDeCadastro extends React.Component {
         return (
             <>
                 <div>
-
-                    <h1>Cadastre o seu serviço</h1>
+                    <Header trocarTela={this.props.trocarTela}/>
+                    <h1 class="titulo">Cadastre o seu serviço</h1>
 
             <Texto>
                     <input
@@ -81,7 +81,6 @@ export default class TelaDeCadastro extends React.Component {
                         onChange={this.mudaTitle}
                         type="text"
                         placeholder="Titulo"
-
                     />
 
                     <input
@@ -89,7 +88,6 @@ export default class TelaDeCadastro extends React.Component {
                      onChange={this.mudaDescription}
                         type="text"
                         placeholder="Descição"
-
                     />
 
                     <input
@@ -97,11 +95,9 @@ export default class TelaDeCadastro extends React.Component {
                      value={this.state.price}
                      onChange={this.mudaPrice}
                     placeholder="Preço"
-
                     />
 
-                    <select name="info[]"
-                    >
+                    <select class="sel1" name="info[]">
                         <option value="">Cartão de Débito</option>
                         <option value="">Cartão de Crédito</option>
                         <option value="">PayPal</option>
@@ -111,11 +107,7 @@ export default class TelaDeCadastro extends React.Component {
 
                     <input type="date" />
                     <br /><br />
-                    <button
-                        onClick={this.cadastraNinja}
-
-
-                    >Cadastrar serviço</button>
+                    <button onClick={this.cadastraNinja}>Cadastrar serviço</button>
                     </Texto>
 
                 </div>

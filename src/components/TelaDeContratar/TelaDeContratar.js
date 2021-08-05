@@ -1,12 +1,44 @@
 import React from 'react'
 import Header from '../Header/Header'
 import './TelaDeContratar.css'
+import axios from 'axios'
 
 
 
 export default class TelaDeContratar extends React.Component{
+    state = {
+        servicos: {
+            title: "",
+            description: "",
+            price:"",
+            paymentMethods: ["cartao"],
+            dueDate: "2222-10-10"
+        }
+    }
+    
+    componentDidMount(){
+        this.listarNinja()
+    }
+    
+    listarNinja = ()=>{
+        const url = ` https://labeninjas.herokuapp.com/jobs`
+        const headers = {
+            headers: {
+                Authorization: "8f358eda-ff93-4ae6-9905-c06d326e4ad8"
+            }
+        }
+        
+        axios.get(url, headers).then((res)=>{
+            this.setState({servicos: res.data})
+        }).catch((err)=>{
+            alert(err)
+        })
+    }
 
     render(){
+        
+       
+        
          return(
             <div>
             <Header trocarTela={this.props.trocarTela}/>
@@ -23,7 +55,7 @@ export default class TelaDeContratar extends React.Component{
                 <option value="">Prazo</option>
             </select>
             </div>
-                
+                         
             </div>
         )
     }
