@@ -2,6 +2,7 @@ import Axios from 'axios'
 import React from 'react'
 import Header from '../Header/Header'
 import './TelaDeContratar.css'
+import { convertDate } from '../../utils/convertDate'
 
 export default class TelaDeContratar extends React.Component{
 
@@ -46,6 +47,7 @@ getAllJobs=()=>{
         </div>
 
         </div>
+
     })
          return(
             <div>

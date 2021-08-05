@@ -68,6 +68,7 @@ export default class TelaDeCadastro extends React.Component {
             dueDate: this.state.dueDate
 
         }
+
             axios.post(url, body, headers)
             .then((res) => { alert('Serviço cadastrado com sucesso!')
             this.setState({ inputTitulo: "", inputDescricao: "", inputPreco: 0, inputFormaPagamento: [], inputPrazo: ""})         
@@ -75,6 +76,7 @@ export default class TelaDeCadastro extends React.Component {
             .catch((err) => { console.log(err.response.data) }) 
         }
         
+       
     }
 
 
@@ -113,7 +115,9 @@ export default class TelaDeCadastro extends React.Component {
 
                     />
 
+
                     <select class="sel1" value={this.state.paymentMethods}
+
                          onChange={this.mudaPaymentMethods}
                          >
                             <option selected>Forma de Pagamento:</option>
@@ -127,6 +131,7 @@ export default class TelaDeCadastro extends React.Component {
                     <input type="date" name="prazo" value={this.state.dueDate} onChange={this.mudaDueDate} />
         
                     <button onClick={this.cadastraNinja} class="btnCadastrar">Cadastrar serviço</button>
+
                     </Texto>
 
                 </div>
