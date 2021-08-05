@@ -1,48 +1,56 @@
+import Axios from 'axios'
 import React from 'react'
 import Header from '../Header/Header'
 import './TelaDeContratar.css'
-import axios from 'axios'
-
-
+import { convertDate } from '../../utils/convertDate'
 
 export default class TelaDeContratar extends React.Component{
-    state = {
-        servicos: {
-            title: "",
-            description: "",
-            price:"",
-            paymentMethods: ["cartao"],
-            dueDate: "2222-10-10"
+
+state={
+   listaDeServicos:[]
+}
+
+
+componentDidMount(){
+
+    this.getAllJobs()
+}
+
+
+getAllJobs=()=>{
+    const url =`https://labeninjas.herokuapp.com/jobs`
+    const headers = {
+        headers: {
+            Authorization: "8f358eda-ff93-4ae6-9905-c06d326e4ad8"
         }
     }
-    
-    componentDidMount(){
-        this.listarNinja()
-    }
-    
-    listarNinja = ()=>{
-        const url = ` https://labeninjas.herokuapp.com/jobs`
-        const headers = {
-            headers: {
-                Authorization: "8f358eda-ff93-4ae6-9905-c06d326e4ad8"
-            }
-        }
-        
-        axios.get(url, headers).then((res)=>{
-            this.setState({servicos: res.data})
-        }).catch((err)=>{
-            alert(err)
+    Axios.get(url,headers)
+    .then((res)=>{
+        this.setState({
+            listaDeServicos:res.data.jobs
         })
-    }
+        console.log(res.data.jobs)
+       })
+    .catch((err)=>{console.log(err)})
+}
+
 
     render(){
+    
+    const mostrar = this.state.listaDeServicos.map((item)=>{
+        return <div class="cont">
         
-       
-        
+        <div class="lista">Titulo: {item.title}<br/><br/>
+        Preco: R$ {item.price}<br/><br/>
+        Prazo: { convertDate {item.dueDate}}<br/><br/>
+        <button>Ver detalhes</button>&nbsp;&nbsp;&nbsp;<button>Adicionar ao carrinho</button>
+        </div>
+
+        </div>
+    })
          return(
             <div>
             <Header trocarTela={this.props.trocarTela}/>
-            
             <div  class="conteudo">
             <input type="text" placeholder="Valor mínimo"/>
             <input type="text" placeholder="Valor máximo"/>
@@ -54,8 +62,9 @@ export default class TelaDeContratar extends React.Component{
                 <option value="">Título</option>
                 <option value="">Prazo</option>
             </select>
+            {mostrar}
             </div>
-                         
+                
             </div>
         )
     }
