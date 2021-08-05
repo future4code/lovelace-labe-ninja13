@@ -2,6 +2,7 @@ import Axios from 'axios'
 import React from 'react'
 import Header from '../Header/Header'
 import './TelaDeContratar.css'
+import { convertDate } from '../../utils/convertDate'
 
 export default class TelaDeContratar extends React.Component{
 
@@ -41,7 +42,7 @@ getAllJobs=()=>{
         
         <div class="lista">Titulo: {item.title}<br/><br/>
         Preco: R$ {item.price}<br/><br/>
-        Prazo: {item.dueDate}<br/><br/>
+        Prazo: { convertDate {item.dueDate}}<br/><br/>
         <button>Ver detalhes</button>&nbsp;&nbsp;&nbsp;<button>Adicionar ao carrinho</button>
         </div>
 
