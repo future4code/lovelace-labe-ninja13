@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import TelaDeCadastro from './components/TelaDeCadastro/TelaDeCadastro';
 import TelaDeContratar from './components/TelaDeContratar/TelaDeContratar'
 import Carrinho from './components/Carrinho/Carrinho'
+import Detalhe from './components/Detalhe/Detalhe'
 
 
 
@@ -15,7 +16,8 @@ export default class App extends React.Component{
 
 state={
 	tela:"home",
-	carrinho: []
+	carrinho: [],
+	clickedServiceId: ""
 }
 
 
@@ -24,6 +26,10 @@ adicionarAoCarrinho = (item) => {
     const carrinhoAtualizado = [...this.state.carrinho, item];
 	alert("produto adicionado")
     this.setState({ carrinho: carrinhoAtualizado });};
+    
+irParaDetalhe = (id)=>{
+	this.setState({tela: "detalhe", clickedServiceUrl: id})
+}
 
 
 renderizatela=()=>{
@@ -37,6 +43,8 @@ renderizatela=()=>{
 			carrinho={this.state.carrinho}
             adicionarAoCarrinho={this.adicionarAoCarrinho}
 			trocarTela={this.trocarTela}/>
+		case "detalhe":
+			return <Detalhe trocarTela={this.trocarTela} id = {this.state.clickedServiceId}/>
 		case "carrinho":
 		    return <Carrinho 
 			carrinho={this.state.carrinho}
