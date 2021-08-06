@@ -3,4 +3,4 @@ export const convertDate = (date) => {
     const month = date.substring(5, 7)
     const year = date.substring(0, 4)
     return `${day}/${month}/${year}`
-
+}
