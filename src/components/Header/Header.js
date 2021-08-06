@@ -40,7 +40,8 @@ export default class Header extends React.Component {
       Home
     </Button>
 
-    <Button variant="contained" color="primary" onClick={() => this.props.trocarTela("carrinho")}>
+    <Button  
+    variant="contained" color="primary" onClick={() => this.props.trocarTela("carrinho")}>
       Carrinho
     </Button>
 
