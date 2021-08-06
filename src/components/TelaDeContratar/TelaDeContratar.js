@@ -51,7 +51,10 @@ getAllJobs=()=>{
 
         Prazo: { convertDate (item.dueDate)}<br/><br/>
 
-        <button>Ver detalhes</button>&nbsp;&nbsp;&nbsp;
+        <button
+        key={item.id}
+        onClick={()=> this.props.irParaDetalhe(item.id)}
+        >Ver detalhes</button>&nbsp;&nbsp;&nbsp;
 
         <button
        onClick={() => this.props.adicionarAoCarrinho(item)}
