@@ -2,12 +2,13 @@ import Axios from 'axios'
 import React from 'react'
 import Header from '../Header/Header'
 import './TelaDeContratar.css'
+import Carrinho from '../Carrinho/Carrinho'
 import { convertDate } from '../../utils/convertDate'
 
 export default class TelaDeContratar extends React.Component{
 
 state={
-   listaDeServicos:[]
+   listaDeServicos:[],
 }
 
 
@@ -15,6 +16,7 @@ componentDidMount(){
 
     this.getAllJobs()
 }
+
 
 
 getAllJobs=()=>{
@@ -37,13 +39,23 @@ getAllJobs=()=>{
 
     render(){
     
+
+
+
     const mostrar = this.state.listaDeServicos.map((item)=>{
         return <div class="cont">
         
         <div class="lista">Titulo: {item.title}<br/><br/>
+
         Preco: R$ {item.price}<br/><br/>
+
         Prazo: { convertDate (item.dueDate)}<br/><br/>
-        <button>Ver detalhes</button>&nbsp;&nbsp;&nbsp;<button>Adicionar ao carrinho</button>
+
+        <button>Ver detalhes</button>&nbsp;&nbsp;&nbsp;
+
+        <button
+       onClick={() => this.props.adicionarAoCarrinho(item)}
+        >Adicionar ao carrinho</button>
         </div>
 
         </div>
@@ -51,19 +63,25 @@ getAllJobs=()=>{
     })
          return(
             <div>
-            <Header trocarTela={this.props.trocarTela}/>
+            <Header
+            trocarTela={this.props.trocarTela}/>
+
             <div  class="conteudo">
+
             <input type="text" placeholder="Valor mínimo"/>
             <input type="text" placeholder="Valor máximo"/>
             <input type="text" placeholder="Busca por título ou descrição"/>
+
             <select class="sel">
                 <option value="">Sem ordenação</option>
                 <option value="">Menor valor</option>
                 <option value="">Maior valor</option>
                 <option value="">Título</option>
                 <option value="">Prazo</option>
+
             </select>
             {mostrar}
+            
             </div>
                 
             </div>

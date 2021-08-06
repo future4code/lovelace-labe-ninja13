@@ -14,8 +14,16 @@ import Carrinho from './components/Carrinho/Carrinho'
 export default class App extends React.Component{
 
 state={
-	tela:"home"
+	tela:"home",
+	carrinho: []
 }
+
+
+
+adicionarAoCarrinho = (item) => {
+    const carrinhoAtualizado = [...this.state.carrinho, item];
+	alert("produto adicionado")
+    this.setState({ carrinho: carrinhoAtualizado });};
 
 
 renderizatela=()=>{
@@ -25,9 +33,14 @@ renderizatela=()=>{
 		case "cadastrar":
 			return <TelaDeCadastro trocarTela={this.trocarTela}/>
 		case "contratar":
-		    return <TelaDeContratar trocarTela={this.trocarTela}/>
+		    return <TelaDeContratar 
+			carrinho={this.state.carrinho}
+            adicionarAoCarrinho={this.adicionarAoCarrinho}
+			trocarTela={this.trocarTela}/>
 		case "carrinho":
-		    return <Carrinho trocarTela={this.trocarTela}/>
+		    return <Carrinho 
+			carrinho={this.state.carrinho}
+			trocarTela={this.trocarTela}/>
 	}
 }
 
