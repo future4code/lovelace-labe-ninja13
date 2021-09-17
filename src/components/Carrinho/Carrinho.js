@@ -43,7 +43,8 @@ export default class Carrinho extends React.Component{
             <Header trocarTela={this.props.trocarTela}/>
                 {mostrar}<Footer>Total: R$ {this.total()}
                             <button onClick={this.props.limpar}>Limpar carrinho</button>
-                         </Footer>                               
+                         </Footer>
+                         <button onClick={()=> this.props.trocarTela('contratar')}>Voltar</button>                               
             </>
         )
     }
