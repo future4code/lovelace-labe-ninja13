@@ -116,7 +116,7 @@ export default class TelaDeCadastro extends React.Component {
                     />
 
 
-                    <select class="sel1" value={this.state.paymentMethods}
+                    <select value={this.state.paymentMethods}
 
                          onChange={this.mudaPaymentMethods}
                          >

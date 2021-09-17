@@ -31,9 +31,7 @@ getAllJobs=()=>{
         this.setState({
             listaDeServicos:res.data.jobs
         })
-        console.log(res.data.jobs)
-       })
-    .catch((err)=>{console.log(err)})
+       }).catch((err)=>{console.log(err)})
 }
 
 
@@ -66,8 +64,7 @@ getAllJobs=()=>{
     })
          return(
             <div>
-            <Header
-            trocarTela={this.props.trocarTela}/>
+            <Header trocarTela={this.props.trocarTela}/>
 
             <div  class="conteudo">
 
