@@ -1,54 +1,49 @@
 import React from 'react'
 import Header from '../Header/Header'
 import axios from 'axios'
-import TelaDeContratar from '../TelaDeContratar/TelaDeContratar'
+import styled from 'styled-components'
+
+
+const Item = styled.div`
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid;
+    background-color: lightgray;
+    padding: 15px;
+    margin: 25px;
+`
+const Footer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+`
 
 export default class Carrinho extends React.Component{
-
-    adicionaNoCarrinho = (produto) => {
-        const produtosAtualizados = [...this.state.carrinho,
-            produto
-        ]
-        this.setState({ carrinho: produtosAtualizados })
-        alert('Produto adicionado no carrinho.')
+    state={
+        job: this.props.carrinho
     }
 
-    pegarListaCarrinho = () => {
-        const url = "https://labeninjas.herokuapp.com/jobs";
-        const headers = {
-            headers: {
-                Authorization: "8a5a528e-1da7-4a55-9e68-2b8b014d576f",
-            },
+    total = ()=>{
+        let soma = 0
+        for(let item in this.state.job){
+            soma += this.state.job[item].price        
         }
-
-        axios.get(url, headers)
-            .then((resp) => {
-                const jobsSelecionados = resp.data.jobs.map((job) => {
-                    return (
-                        this.setState({carrinho: jobsSelecionados})
-                    )
-                })
-
-               
-
-            })
-            .catch((erro) => {
-                alert(erro.response.data.error);
-            });
-    };
+        return soma
+    }
 
     render(){
 
-       const  mostra=this.props.carrinho.map((item) => {
-        return(
-                <p>{item.title}</p>
-            )
-        })
-        return(
+    const mostrar = this.state.job.map(item=>{
+        return<Item>{item.title} R$ {item.price}<button onClick={()=> this.props.remover(item.id)}>
+                    Remover</button></Item>
+    }) 
+
+       return(
             <>
             <Header trocarTela={this.props.trocarTela}/>
-            <h3>Aqui e o carrinho</h3>  
-            {mostra}   
+                {mostrar}<Footer>Total: R$ {this.total()}
+                            <button onClick={this.props.limpar}>Limpar carrinho</button>
+                         </Footer>                               
             </>
         )
     }

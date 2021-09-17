@@ -6,7 +6,6 @@ import TelaDeCadastro from '../TelaDeCadastro/TelaDeCadastro'
 
 const Texto = styled.div`
 display:flex;
-
 justify-content: center;
 align-items: center;
 flex-direction: column;
@@ -16,7 +15,9 @@ p{
   padding: 15px;
 }
 `
-const Button = styled.button``
+const Button = styled.button`
+  margin-left: -20px;
+`
 export default class Home extends Component {
   render() {
     return (

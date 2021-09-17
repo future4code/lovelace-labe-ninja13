@@ -21,14 +21,27 @@ state={
 }
 
 
-
 adicionarAoCarrinho = (item) => {
     const carrinhoAtualizado = [...this.state.carrinho, item];
 	alert("produto adicionado")
-    this.setState({ carrinho: carrinhoAtualizado });};
+    this.setState({ carrinho: carrinhoAtualizado })
+}
+
+removerDoCarrinho = (id)=>{
+	this.state.carrinho.filter(item=>{
+		return item.id !== id
+	})
+}
+
+limparCarrinho = ()=>{
+	const decide = window.confirm('Tem certeza que deseja deletar todos os itens?')
+	if(decide){
+		this.setState({carrinho: []})
+	}
+}
     
 irParaDetalhe = (id)=>{
-	this.setState({tela: "detalhe", clickedServiceUrl: id})
+	this.setState({tela: "detalhe", clickedServiceId: id})
 }
 
 
@@ -39,16 +52,14 @@ renderizatela=()=>{
 		case "cadastrar":
 			return <TelaDeCadastro trocarTela={this.trocarTela}/>
 		case "contratar":
-		    return <TelaDeContratar 
-			carrinho={this.state.carrinho}
+		    return <TelaDeContratar carrinho={this.state.carrinho}
             adicionarAoCarrinho={this.adicionarAoCarrinho}
-			trocarTela={this.trocarTela}/>
+			trocarTela={this.trocarTela} irParaDetalhe={this.irParaDetalhe}/>
 		case "detalhe":
-			return <Detalhe trocarTela={this.trocarTela} id = {this.state.clickedServiceId}/>
+			return <Detalhe trocarTela={this.trocarTela} id={this.state.clickedServiceId}/>
 		case "carrinho":
-		    return <Carrinho 
-			carrinho={this.state.carrinho}
-			trocarTela={this.trocarTela}/>
+		    return <Carrinho carrinho={this.state.carrinho} trocarTela={this.trocarTela}
+		    		remover={this.removerDoCarrinho} limpar={this.limparCarrinho}/>
 	}
 }
 
