@@ -8,6 +8,7 @@ import TelaDeCadastro from './components/TelaDeCadastro/TelaDeCadastro';
 import TelaDeContratar from './components/TelaDeContratar/TelaDeContratar'
 import Carrinho from './components/Carrinho/Carrinho'
 import Detalhe from './components/Detalhe/Detalhe'
+import BackToCart from './Back'
 
 
 
@@ -28,9 +29,8 @@ adicionarAoCarrinho = (item) => {
 }
 
 removerDoCarrinho = (id)=>{
-	this.state.carrinho.filter(item=>{
-		return item.id !== id
-	})
+	this.setState({carrinho: this.state.carrinho.filter(item=>{return item.id !== id})})
+	this.trocarTela('back')
 }
 
 limparCarrinho = ()=>{
@@ -38,6 +38,7 @@ limparCarrinho = ()=>{
 	if(decide){
 		this.setState({carrinho: []})
 	}
+	this.trocarTela('back')
 }
     
 irParaDetalhe = (id)=>{
@@ -60,6 +61,8 @@ renderizatela=()=>{
 		case "carrinho":
 		    return <Carrinho carrinho={this.state.carrinho} trocarTela={this.trocarTela}
 		    		remover={this.removerDoCarrinho} limpar={this.limparCarrinho}/>
+		case "back":
+			return <BackToCart trocarTela={this.trocarTela} />
 	}
 }
 
